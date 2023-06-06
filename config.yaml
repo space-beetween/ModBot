@@ -1,0 +1,4 @@
+bot_token: ""
+modio_api_key: ""
+db_uri: "dialect+async_driver://username:password@host:port/database"
+test_guilds: []

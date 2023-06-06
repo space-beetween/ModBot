@@ -1,0 +1,4 @@
+SQLAlchemy==2.0.15
+disnake==2.8.1
+mod.io==0.4.3
+PyYAML==6.0
