@@ -15,6 +15,8 @@ You can add it via this [link](https://discord.com/oauth2/authorize?client_id=11
 ### Installing
 Clone this repository and install the packages from `requirements.txt`
 
+You should also install an asynchronous driver for your SQL dialect
+
 After that, modify the `config.yaml` file
 ```yaml
 bot_token: "your discord bot token"
@@ -26,3 +28,10 @@ And run the bot
 ```
 python3 main.py
 ```
+
+## Supported games
+By default, you can only subscribe to update mods for 4 games:
+* [Deep Rock Galatic](https://mod.io/g/drg)
+* [Besiege](https://mod.io/g/besiege)
+* [Space Engineers](https://mod.io/g/spaceengineers)
+* [Insurgency: Sandstorm](https://mod.io/g/insurgencysandstorm)
