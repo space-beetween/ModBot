@@ -49,7 +49,7 @@ class ModioInfo(commands.Cog):
 
         game = await self._get_game(game_id)
 
-        if not game:
+        if game is None:
             await inter.response.send_message(
                 "game not found",
                 ephemeral=True
@@ -69,7 +69,7 @@ class ModioInfo(commands.Cog):
 
         game = await self._get_game(game_id)
 
-        if not game:
+        if game is None:
             await inter.response.send_message(
                 "game not found",
                 ephemeral=True
@@ -78,7 +78,7 @@ class ModioInfo(commands.Cog):
 
         mod = await self._get_mod(game, mod_id)
 
-        if not mod:
+        if mod is None:
             await inter.response.send_message(
                 "mod not found",
                 ephemeral=True

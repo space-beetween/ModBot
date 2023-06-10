@@ -37,7 +37,7 @@ class Base(AsyncAttrs, DeclarativeBase):
         async with async_session() as session:
             async with session.begin():
                 statement = sqla.select(cls)
-                if whereclause:
+                if len(whereclause) != 0:
                     statement = statement.where(*whereclause)
 
                 result = await session.execute(statement)
@@ -51,7 +51,7 @@ class Base(AsyncAttrs, DeclarativeBase):
         async with async_session() as session:
             async with session.begin():
                 statement = sqla.delete(cls)
-                if whereclause:
+                if len(whereclause) != 0:
                     statement = statement.where(*whereclause)
 
                 await session.execute(statement)

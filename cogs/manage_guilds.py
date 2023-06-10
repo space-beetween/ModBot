@@ -27,7 +27,7 @@ class ManageGuilds(commands.Cog):
         game = await models.Game.find(
             models.Game.game_id == game_id
         )
-        if game:
+        if game is not None:
             return
 
         await models.Game.add(
@@ -44,7 +44,7 @@ class ManageGuilds(commands.Cog):
             models.Subscription.game_id == game_id
         )
 
-        if not subscriptions:
+        if subscriptions is None:
             return None
 
         return subscriptions[0]
@@ -65,7 +65,7 @@ class ManageGuilds(commands.Cog):
 
         subscription = await self._get_subscription(inter.guild, game_id)
 
-        if subscription:
+        if subscription is not None:
             await inter.edit_original_response(
                 "You are already subscribed"
             )
@@ -102,7 +102,7 @@ class ManageGuilds(commands.Cog):
             game_id=game_id
         )
 
-        if not subscription:
+        if subscription is None:
             await inter.edit_original_response(
                 "You are not subscribed"
             )
