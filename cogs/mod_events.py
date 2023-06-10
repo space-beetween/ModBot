@@ -118,7 +118,7 @@ class ModioEvents(commands.Cog):
                     (models.SendedEvent.mod_file_id == mod.file.id) |
                     (models.SendedEvent.event_id == event.id)
                 )
-                if sended_event is not None:
+                if len(sended_event) != 0:
                     continue
 
                 await self._send_mod(game, msg_content, mod)

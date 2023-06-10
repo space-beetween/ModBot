@@ -44,7 +44,7 @@ class ManageGuilds(commands.Cog):
             models.Subscription.game_id == game_id
         )
 
-        if subscriptions is None:
+        if len(subscriptions) == 0:
             return None
 
         return subscriptions[0]
