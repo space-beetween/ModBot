@@ -1,5 +1,5 @@
 import logging
-from typing import List
+from typing import List, Dict, Final
 
 from disnake import NotFound, Forbidden
 from disnake.ext import commands, tasks
@@ -12,18 +12,17 @@ import models
 from message_components.embeds import ModEmbed
 from bot import Bot
 
-
 _log = logging.getLogger(__name__)
+
+MESSAGE_CONTENTS: Final[Dict[str, str]] = {
+    EventType.available: "A new mod available :tada:",
+    EventType.file_changed: "A mod has been updated"
+}
 
 
 class ModioEvents(commands.Cog):
     def __init__(self, bot: "Bot") -> None:
         self.bot = bot
-
-        self.message_content = {
-            EventType.available: "A new mod available :tada:",
-            EventType.file_changed: "A mod has been updated"
-        }
         self.mod_event_handler.start()
 
     async def _get_mod_events(self, game: Game) -> List[Event]:
@@ -38,16 +37,16 @@ class ModioEvents(commands.Cog):
         for event_type in (EventType.available, EventType.file_changed):
             filter.equals(event_type=event_type)
             try:
-                event_request = await game.async_get_mod_events(
+                returned_events = await game.async_get_mod_events(
                     filters=filter
                 )
             except KeyError:
-                event_request = None
+                returned_events = None
 
-            if event_request is None:
+            if returned_events is None:
                 event = None
             else:
-                event = event_request.results[0]
+                event = returned_events.results[0]
 
             events.append(event)
 
@@ -103,7 +102,7 @@ class ModioEvents(commands.Cog):
                     continue
 
                 try:
-                    msg_content = self.message_content[event.type]
+                    msg_content = MESSAGE_CONTENTS[event.type]
                 except KeyError:
                     continue
 

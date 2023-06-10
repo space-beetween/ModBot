@@ -27,10 +27,7 @@ class ModEmbed(Embed):
             description=mod.summary,
             color=Color.blurple()
         )
-        mod_info: List[str] = [
-            f"Version: {mod.file.version}",
-            f"Size: {convert_size(mod.file.size)}"
-        ]
+        self.set_image(url=mod.logo.original)
 
         self.set_author(
             name=game.name,
@@ -41,15 +38,16 @@ class ModEmbed(Embed):
             text=mod.submitter.username,
             icon_url=mod.submitter.avatar.original
         )
+
+        mod_info: List[str] = [
+            f"Version: {mod.file.version}",
+            f"Size: {convert_size(mod.file.size)}"
+        ]
         self.add_field("Info", "\n".join(mod_info))
         self.add_field("Tags", ", ".join(mod.tags))
-        self.set_image(url=mod.logo.original)
 
         if mod.file.changelog is not None:
-            self.add_field(
-                "Changelog",
-                mod.file.changelog[:1024]
-            )
+            self.add_field("Changelog",mod.file.changelog[:1024])
 
 
 class GameEmbed(Embed):

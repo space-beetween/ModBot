@@ -5,7 +5,7 @@ from disnake.ext import commands
 
 import models
 from bot import Bot
-from helpers.structures import ModioGames
+from helpers.structures import GameID
 from message_components.embeds import SubscribeEmbed
 
 
@@ -55,7 +55,7 @@ class ManageGuilds(commands.Cog):
     async def subscribe(
         self,
         inter: AppCmdInter,
-        game_id: ModioGames
+        game_id: GameID
     ) -> None:
         """Subscribe the current channel \
         to mod updates of a game"""
@@ -90,7 +90,7 @@ class ManageGuilds(commands.Cog):
     async def unsubscribe(
         self,
         inter: AppCmdInter,
-        game_id: ModioGames
+        game_id: GameID
     ) -> None:
         """Unsubscribe from the current channel"""
 

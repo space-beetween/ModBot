@@ -1,7 +1,7 @@
 from disnake.ext import commands
 
 
-ModioGames = commands.option_enum(
+GameID = commands.option_enum(
     {
         "Deep Rock Galactic": "@drg",
         "Besiege": "@besiege",
