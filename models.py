@@ -83,13 +83,6 @@ class SendedEvent(Base):
     data_added = mapped_column(sqla.DateTime(), server_default=func.now())
 
 
-class Message(Base):
-    __tablename__ = "event_message"
-
-    id: Mapped[int] = mapped_column(primary_key=True)
-    mod_id: Mapped[int] = mapped_column(sqla.BigInteger)
-
-
 async def setup() -> None:
     global async_session
 
