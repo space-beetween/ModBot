@@ -12,6 +12,7 @@ import models
 from message_components.embeds import ModEmbed
 from bot import Bot
 
+
 _log = logging.getLogger(__name__)
 
 MESSAGE_CONTENTS: Final[Dict[str, str]] = {
