@@ -1,8 +1,6 @@
 # ModBot
 ModBot is a bot for viewing information from https://mod.io/
 
-You can add it via this [link](https://discord.com/oauth2/authorize?client_id=1115217216963608608&permissions=274877958144&scope=bot%20applications.commands)
-
 ## Commands
 * `/game <ID>` - Returns information about the game
 * `/mod <Game_ID> <Mod_ID>`- Returns information about the game's mod
